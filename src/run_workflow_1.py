@@ -4,6 +4,7 @@ Main runner for Workflow 1: XML Diff Analysis
 """
 
 import sys
+import json
 from pathlib import Path
 from datetime import datetime
 
@@ -20,7 +21,7 @@ def main():
     
     # Set up paths
     project_root = Path(__file__).parent.parent
-    data_dir = project_root / "data"
+    data_dir = project_root / "test_data"
     set_a_dir = data_dir / "set_a"
     set_b_dir = data_dir / "set_b"
     output_dir = project_root / "output"
@@ -47,8 +48,8 @@ def main():
     print(f"  Output: {output_csv}")
     print()
     
-    # Run analysis
-    analyzer = XMLDiffAnalyzer(str(set_a_dir), str(set_b_dir))
+    # Run analysis (use config-based approach)
+    analyzer = XMLDiffAnalyzer(config_path=str(project_root / "config.json"))
     
     print("Starting analysis...")
     analyzer.analyze_changes()

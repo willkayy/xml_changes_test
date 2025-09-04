@@ -40,6 +40,8 @@ class CSVChangeApplicator:
                 # Handle both old 'status' column and new 'approved' column for backward compatibility
                 approved_value = row.get('approved', row.get('status', ''))
                 
+                # Skip focused_changes column if present - it's for human readability only
+                
                 change = ApprovedChange(
                     file_id=row['file_id'],
                     change_type=row['change_type'],

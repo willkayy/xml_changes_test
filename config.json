@@ -1,0 +1,15 @@
+{
+  "dataset_paths": {
+    "set_a": "test_data/set_a",
+    "set_b": "test_data/set_b"
+  },
+  "focused_diff": {
+    "context_words": 2,
+    "min_word_length": 3,
+    "ignore_case": true
+  },
+  "output": {
+    "csv_timestamp": true,
+    "xml_timestamp": true
+  }
+}

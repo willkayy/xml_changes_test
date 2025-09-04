@@ -5,10 +5,12 @@ XML Diff Analyzer - Compares XML files and generates CSV output for change revie
 
 import xml.etree.ElementTree as ET
 import csv
-import os
 import sys
+import json
+import difflib
+import re
 from pathlib import Path
-from typing import Dict, List, Tuple, Optional
+from typing import Dict, List, Tuple
 from dataclasses import dataclass
 
 
@@ -20,14 +22,28 @@ class XMLChange:
     xml_path: str
     old_content: str
     new_content: str
+    focused_changes: str = ""  # Specific word changes with context
     approved: str = ""  # Will be populated with dropdown options
 
 
 class XMLDiffAnalyzer:
-    def __init__(self, set_a_dir: str, set_b_dir: str):
-        self.set_a_dir = Path(set_a_dir)
-        self.set_b_dir = Path(set_b_dir)
+    def __init__(self, set_a_dir: str = None, set_b_dir: str = None, config_path: str = "config.json"):
+        self.config = self.load_config(config_path)
+        self.set_a_dir = Path(set_a_dir) if set_a_dir else Path(self.config['dataset_paths']['set_a'])
+        self.set_b_dir = Path(set_b_dir) if set_b_dir else Path(self.config['dataset_paths']['set_b'])
         self.changes: List[XMLChange] = []
+        
+    def load_config(self, config_path: str) -> dict:
+        """Load configuration from JSON file"""
+        try:
+            with open(config_path, 'r') as f:
+                return json.load(f)
+        except FileNotFoundError:
+            # Default configuration if file not found
+            return {
+                "dataset_paths": {"set_a": "data/set_a", "set_b": "data/set_b"},
+                "focused_diff": {"context_words": 2, "min_word_length": 3, "ignore_case": True}
+            }
     
     def get_xml_path(self, element, root) -> str:
         """Generate XPath-like string for an element"""
@@ -73,6 +89,56 @@ class XMLDiffAnalyzer:
                 text_parts.append(child.tail.strip())
         
         return " ".join(text_parts).strip()
+    
+    def get_focused_changes(self, old_text: str, new_text: str) -> str:
+        """Extract specific word changes with context for better readability"""
+        if not old_text and not new_text:
+            return ""
+        
+        if not old_text:
+            return f"ADDED: {new_text[:100]}..."
+        
+        if not new_text:
+            return f"REMOVED: {old_text[:100]}..."
+        
+        # Split into words for comparison
+        old_words = re.findall(r'\S+', old_text)
+        new_words = re.findall(r'\S+', new_text)
+        
+        # Use difflib to find differences
+        differ = difflib.SequenceMatcher(None, old_words, new_words)
+        changes = []
+        
+        context_words = self.config.get('focused_diff', {}).get('context_words', 2)
+        
+        for tag, i1, i2, j1, j2 in differ.get_opcodes():
+            if tag == 'replace':
+                # Get context around the change
+                start_context = max(0, i1 - context_words)
+                end_context = min(len(old_words), i2 + context_words)
+                
+                old_context = ' '.join(old_words[start_context:i1]) + ' [' + ' '.join(old_words[i1:i2]) + '] ' + ' '.join(old_words[i2:end_context])
+                new_context = ' '.join(new_words[max(0, j1 - context_words):j1]) + ' [' + ' '.join(new_words[j1:j2]) + '] ' + ' '.join(new_words[j2:min(len(new_words), j2 + context_words)])
+                
+                changes.append(f"CHANGED: '{old_context.strip()}' → '{new_context.strip()}'")
+                
+            elif tag == 'delete':
+                # Get context around deletion
+                start_context = max(0, i1 - context_words)
+                end_context = min(len(old_words), i2 + context_words)
+                
+                context = ' '.join(old_words[start_context:i1]) + ' [' + ' '.join(old_words[i1:i2]) + '] ' + ' '.join(old_words[i2:end_context])
+                changes.append(f"REMOVED: '{context.strip()}'")
+                
+            elif tag == 'insert':
+                # Get context around insertion
+                start_context = max(0, j1 - context_words)
+                end_context = min(len(new_words), j2 + context_words)
+                
+                context = ' '.join(new_words[start_context:j1]) + ' [' + ' '.join(new_words[j1:j2]) + '] ' + ' '.join(new_words[j2:end_context])
+                changes.append(f"ADDED: '{context.strip()}'")
+        
+        return ', '.join(changes) if changes else "No specific word changes detected"
     
     def compare_elements(self, elem_a, elem_b, file_id: str, root_a, root_b):
         """Compare two XML elements and record changes"""
@@ -133,13 +199,15 @@ class XMLDiffAnalyzer:
             new_text = self.get_element_text_content(elem_b)
             
             if old_text != new_text:
+                focused_changes = self.get_focused_changes(old_text, new_text)
                 change = XMLChange(
                     file_id=file_id,
                     change_type="MODIFY",
                     section_id=section_id,
                     xml_path=xml_path,
                     old_content=old_text,
-                    new_content=new_text
+                    new_content=new_text,
+                    focused_changes=focused_changes
                 )
                 self.changes.append(change)
     
@@ -250,7 +318,7 @@ class XMLDiffAnalyzer:
     def export_to_csv(self, output_file: str) -> None:
         """Export all changes to CSV format with approval dropdown options"""
         with open(output_file, 'w', newline='', encoding='utf-8') as csvfile:
-            fieldnames = ['file_id', 'change_type', 'section_id', 'xml_path', 'old_content', 'new_content', 'approved']
+            fieldnames = ['file_id', 'change_type', 'section_id', 'xml_path', 'old_content', 'new_content', 'focused_changes', 'approved']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             
             writer.writeheader()
@@ -265,6 +333,7 @@ class XMLDiffAnalyzer:
                     'xml_path': change.xml_path,
                     'old_content': change.old_content,
                     'new_content': change.new_content,
+                    'focused_changes': change.focused_changes,
                     'approved': approved_options
                 })
     
@@ -278,15 +347,22 @@ class XMLDiffAnalyzer:
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("Usage: python xml_diff_analyzer.py <set_a_dir> <set_b_dir> <output_csv>")
+    if len(sys.argv) == 4:
+        # Legacy mode: explicit paths provided
+        set_a_dir = sys.argv[1]
+        set_b_dir = sys.argv[2]
+        output_csv = sys.argv[3]
+        analyzer = XMLDiffAnalyzer(set_a_dir, set_b_dir)
+    elif len(sys.argv) == 2:
+        # Config mode: only output file provided
+        output_csv = sys.argv[1]
+        analyzer = XMLDiffAnalyzer()  # Will use config file
+    else:
+        print("Usage: python xml_diff_analyzer.py [<set_a_dir> <set_b_dir>] <output_csv>")
+        print("  With config file: python xml_diff_analyzer.py <output_csv>")
+        print("  Direct paths: python xml_diff_analyzer.py <set_a_dir> <set_b_dir> <output_csv>")
         sys.exit(1)
     
-    set_a_dir = sys.argv[1]
-    set_b_dir = sys.argv[2]
-    output_csv = sys.argv[3]
-    
-    analyzer = XMLDiffAnalyzer(set_a_dir, set_b_dir)
     analyzer.analyze_changes()
     analyzer.export_to_csv(output_csv)
     
