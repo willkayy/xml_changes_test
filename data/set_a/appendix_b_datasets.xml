@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document section="appendix_b" type="reference">
+  <metadata>
+    <title>Sample Datasets and Resources</title>
+    <author>Data Team</author>
+    <version>1.0</version>
+    <page_range>116-125</page_range>
+  </metadata>
+  <content>
+    <paragraph id="p1">
+      <text>Practice datasets are essential for learning and testing data science techniques. This section lists publicly available datasets suitable for various types of analysis.</text>
+    </paragraph>
+    <dataset_categories>
+      <category name="Business and Finance">
+        <dataset name="Stock Market Data">
+          <source>Yahoo Finance, Alpha Vantage</source>
+          <description>Historical stock prices and trading volumes</description>
+          <use_case>Time series analysis, financial modeling</use_case>
+        </dataset>
+        <dataset name="Sales Data">
+          <source>Kaggle, UCI ML Repository</source>
+          <description>Transaction records and customer information</description>
+          <use_case>Customer segmentation, sales forecasting</use_case>
+        </dataset>
+      </category>
+      <category name="Social and Behavioral">
+        <dataset name="Census Data">
+          <source>US Census Bureau, Statistics Canada</source>
+          <description>Demographic and socioeconomic information</description>
+          <use_case>Population analysis, market research</use_case>
+        </dataset>
+      </category>
+    </dataset_categories>
+    <paragraph id="p2">
+      <text>Always respect data licensing agreements and privacy regulations when using public datasets in your projects.</text>
+    </paragraph>
+  </content>
+  <formatting>
+    <font_family>Arial</font_family>
+    <font_size>12</font_size>
+    <line_spacing>1.5</line_spacing>
+  </formatting>
+</document>

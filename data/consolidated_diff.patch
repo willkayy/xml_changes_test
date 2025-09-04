@@ -1,0 +1,400 @@
+diff -u -r set_a/appendix_a_tools.xml set_b/appendix_a_tools.xml
+--- set_a/appendix_a_tools.xml	2025-09-04 09:08:53.000000000 +1000
++++ set_b/appendix_a_tools.xml	2025-09-04 09:12:45.000000000 +1000
+@@ -3,7 +3,7 @@
+   <metadata>
+     <title>Software Tools and Platforms</title>
+     <author>Technology Team</author>
+-    <version>1.0</version>
++    <version>1.1</version>
+     <page_range>106-115</page_range>
+   </metadata>
+   <content>
+@@ -14,15 +14,19 @@
+       <category name="Programming Languages">
+         <tool name="Python">
+           <description>General-purpose language with extensive data science libraries</description>
+-          <libraries>pandas, numpy, scikit-learn, matplotlib</libraries>
++          <libraries>pandas, numpy, scikit-learn, matplotlib, seaborn, plotly</libraries>
+         </tool>
+         <tool name="R">
+           <description>Statistical computing language</description>
+-          <libraries>ggplot2, dplyr, caret, shiny</libraries>
++          <libraries>ggplot2, dplyr, caret, shiny, tidyverse</libraries>
+         </tool>
+         <tool name="SQL">
+           <description>Database query language</description>
+-          <variants>PostgreSQL, MySQL, SQLite, BigQuery</variants>
++          <variants>PostgreSQL, MySQL, SQLite, BigQuery, Snowflake</variants>
++        </tool>
++        <tool name="Julia">
++          <description>High-performance numerical computing language</description>
++          <libraries>DataFrames.jl, MLJ.jl, Plots.jl</libraries>
+         </tool>
+       </category>
+       <category name="Visualization Tools">
+@@ -32,6 +36,9 @@
+         <tool name="Power BI">
+           <description>Microsoft business analytics solution</description>
+         </tool>
++        <tool name="Looker">
++          <description>Cloud-based business intelligence platform</description>
++        </tool>
+       </category>
+     </tool_categories>
+   </content>
+diff -u -r set_a/appendix_b_datasets.xml set_b/appendix_b_datasets.xml
+--- set_a/appendix_b_datasets.xml	2025-09-04 09:09:03.000000000 +1000
++++ set_b/appendix_b_datasets.xml	2025-09-04 09:12:56.000000000 +1000
+@@ -3,36 +3,41 @@
+   <metadata>
+     <title>Sample Datasets and Resources</title>
+     <author>Data Team</author>
+-    <version>1.0</version>
++    <version>1.1</version>
+     <page_range>116-125</page_range>
+   </metadata>
+   <content>
+     <paragraph id="p1">
+-      <text>Practice datasets are essential for learning and testing data science techniques. This section lists publicly available datasets suitable for various types of analysis.</text>
++      <text>Practice datasets are essential for learning and testing data science techniques. This section lists publicly available datasets suitable for various types of analysis and experimentation.</text>
+     </paragraph>
+     <dataset_categories>
+       <category name="Business and Finance">
+         <dataset name="Stock Market Data">
+-          <source>Yahoo Finance, Alpha Vantage</source>
+-          <description>Historical stock prices and trading volumes</description>
+-          <use_case>Time series analysis, financial modeling</use_case>
++          <source>Yahoo Finance, Alpha Vantage, Quandl</source>
++          <description>Historical stock prices, trading volumes, and market indicators</description>
++          <use_case>Time series analysis, financial modeling, portfolio optimization</use_case>
+         </dataset>
+         <dataset name="Sales Data">
+           <source>Kaggle, UCI ML Repository</source>
+           <description>Transaction records and customer information</description>
+-          <use_case>Customer segmentation, sales forecasting</use_case>
++          <use_case>Customer segmentation, sales forecasting, churn prediction</use_case>
+         </dataset>
+       </category>
+       <category name="Social and Behavioral">
+         <dataset name="Census Data">
+-          <source>US Census Bureau, Statistics Canada</source>
++          <source>US Census Bureau, Statistics Canada, Eurostat</source>
+           <description>Demographic and socioeconomic information</description>
+-          <use_case>Population analysis, market research</use_case>
++          <use_case>Population analysis, market research, policy development</use_case>
++        </dataset>
++        <dataset name="Survey Data">
++          <source>World Values Survey, Pew Research</source>
++          <description>Public opinion and social attitudes data</description>
++          <use_case>Social science research, trend analysis</use_case>
+         </dataset>
+       </category>
+     </dataset_categories>
+     <paragraph id="p2">
+-      <text>Always respect data licensing agreements and privacy regulations when using public datasets in your projects.</text>
++      <text>Always respect data licensing agreements and privacy regulations when using public datasets in your projects. Consider data ethics and bias implications.</text>
+     </paragraph>
+   </content>
+   <formatting>
+diff -u -r set_a/bibliography.xml set_b/bibliography.xml
+--- set_a/bibliography.xml	2025-09-04 09:09:56.000000000 +1000
++++ set_b/bibliography.xml	2025-09-04 12:06:34.000000000 +1000
+@@ -3,7 +3,7 @@
+   <metadata>
+     <title>Bibliography and References</title>
+     <author>Research Team</author>
+-    <version>1.0</version>
++    <version>1.1</version>
+     <page_range>141-150</page_range>
+   </metadata>
+   <content>
+@@ -14,18 +14,25 @@
+       <category name="Books">
+         <reference id="ref1">
+           <authors>James, G., Witten, D., Hastie, T., Tibshirani, R.</authors>
+-          <title>An Introduction to Statistical Learning</title>
++          <title>An Introduction to Statistical Learning with Applications in Python</title>
+           <publisher>Springer</publisher>
+-          <year>2021</year>
++          <year>2023</year>
+           <isbn>978-1-0716-1417-4</isbn>
+         </reference>
+         <reference id="ref2">
+           <authors>McKinney, W.</authors>
+-          <title>Python for Data Analysis</title>
++          <title>Python for Data Analysis: Data Wrangling with pandas and NumPy</title>
+           <publisher>O'Reilly Media</publisher>
+           <year>2022</year>
+           <isbn>978-1-4919-5766-0</isbn>
+         </reference>
++        <reference id="ref5">
++          <authors>Géron, A.</authors>
++          <title>Hands-On Machine Learning with Scikit-Learn and TensorFlow</title>
++          <publisher>O'Reilly Media</publisher>
++          <year>2022</year>
++          <isbn>978-1-492-03264-9</isbn>
++        </reference>
+       </category>
+       <category name="Journal Articles">
+         <reference id="ref3">
+diff -u -r set_a/chapter1_intro.xml set_b/chapter1_intro.xml
+--- set_a/chapter1_intro.xml	2025-09-04 09:07:41.000000000 +1000
++++ set_b/chapter1_intro.xml	2025-09-04 09:10:20.000000000 +1000
+@@ -3,15 +3,15 @@
+   <metadata>
+     <title>Introduction to Advanced Analytics</title>
+     <author>Data Science Team</author>
+-    <version>1.0</version>
++    <version>1.1</version>
+     <page_range>1-15</page_range>
+   </metadata>
+   <content>
+     <paragraph id="p1">
+-      <text>In today's data-driven world, organizations rely heavily on advanced analytics to make informed decisions. This comprehensive guide will explore the fundamental concepts and practical applications of modern data science techniques.</text>
++      <text>In today's rapidly evolving data-driven world, organizations rely heavily on advanced analytics to make informed strategic decisions. This comprehensive guide will explore the fundamental concepts and practical applications of modern data science techniques.</text>
+     </paragraph>
+     <paragraph id="p2">
+-      <text>The field of analytics has evolved significantly over the past decade, with new methodologies and tools emerging to handle increasingly complex datasets. Our approach focuses on practical implementation rather than theoretical concepts alone.</text>
++      <text>The field of analytics has evolved significantly over the past decade, with new methodologies and tools emerging to handle increasingly complex and large-scale datasets. Our approach focuses on practical implementation rather than theoretical concepts alone.</text>
+     </paragraph>
+     <section_break/>
+     <paragraph id="p3">
+diff -u -r set_a/chapter2_methods.xml set_b/chapter2_methods.xml
+--- set_a/chapter2_methods.xml	2025-09-04 09:07:51.000000000 +1000
++++ set_b/chapter2_methods.xml	2025-09-04 09:10:32.000000000 +1000
+@@ -3,23 +3,24 @@
+   <metadata>
+     <title>Research Methods and Data Collection</title>
+     <author>Research Team</author>
+-    <version>1.0</version>
++    <version>1.1</version>
+     <page_range>16-35</page_range>
+   </metadata>
+   <content>
+     <paragraph id="p1">
+-      <text>Effective data collection forms the foundation of any successful analytics project. This chapter outlines proven methodologies for gathering, cleaning, and preparing data for analysis.</text>
++      <text>Effective data collection forms the foundation of any successful analytics project. This chapter outlines proven methodologies for gathering, cleaning, and preparing high-quality data for analysis.</text>
+     </paragraph>
+     <bullet_list>
+       <item>Structured data collection techniques</item>
+       <item>Unstructured data processing methods</item>
+       <item>Data quality assessment frameworks</item>
+       <item>Validation and verification protocols</item>
++      <item>Automated data pipeline development</item>
+     </bullet_list>
+     <paragraph id="p2">
+       <text>The quality of insights derived from data analysis is directly proportional to the quality of the underlying data. Poor data collection practices can lead to misleading conclusions and suboptimal business decisions.</text>
+     </paragraph>
+-    <callout type="warning">
++    <callout type="critical">
+       <text>Always validate your data sources before proceeding with analysis. Garbage in, garbage out remains a fundamental principle in data science.</text>
+     </callout>
+   </content>
+diff -u -r set_a/chapter3_analysis.xml set_b/chapter3_analysis.xml
+--- set_a/chapter3_analysis.xml	2025-09-04 09:08:00.000000000 +1000
++++ set_b/chapter3_analysis.xml	2025-09-04 09:10:49.000000000 +1000
+@@ -3,16 +3,16 @@
+   <metadata>
+     <title>Statistical Analysis Techniques</title>
+     <author>Analytics Team</author>
+-    <version>1.0</version>
++    <version>1.1</version>
+     <page_range>36-58</page_range>
+   </metadata>
+   <content>
+     <paragraph id="p1">
+-      <text>Statistical analysis provides the mathematical foundation for extracting meaningful insights from data. This section covers both descriptive and inferential statistics commonly used in business analytics.</text>
++      <text>Statistical analysis provides the mathematical foundation for extracting meaningful insights from data. This section covers both descriptive and inferential statistics commonly used in modern business analytics.</text>
+     </paragraph>
+     <subsection title="Descriptive Statistics">
+       <paragraph id="p2">
+-        <text>Descriptive statistics summarize and describe the main features of a dataset. Key measures include central tendency (mean, median, mode) and variability (standard deviation, variance, range).</text>
++        <text>Descriptive statistics summarize and describe the main features of a dataset. Key measures include central tendency (mean, median, mode) and variability (standard deviation, variance, range, interquartile range).</text>
+       </paragraph>
+       <formula>
+         <expression>μ = Σx/n</expression>
+@@ -25,7 +25,7 @@
+       </paragraph>
+     </subsection>
+     <note type="important">
+-      <text>Always check assumptions before applying statistical tests. Violations can lead to invalid conclusions.</text>
++      <text>Always verify statistical assumptions before applying tests. Violations can lead to invalid conclusions and flawed decision-making.</text>
+     </note>
+   </content>
+   <formatting>
+diff -u -r set_a/chapter4_visualization.xml set_b/chapter4_visualization.xml
+--- set_a/chapter4_visualization.xml	2025-09-04 09:08:11.000000000 +1000
++++ set_b/chapter4_visualization.xml	2025-09-04 09:11:54.000000000 +1000
+@@ -1,9 +1,9 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <document section="chapter4" type="visualization">
+   <metadata>
+-    <title>Data Visualization and Reporting</title>
++    <title>Data Visualization and Interactive Reporting</title>
+     <author>Design Team</author>
+-    <version>1.0</version>
++    <version>1.1</version>
+     <page_range>59-78</page_range>
+   </metadata>
+   <content>
+@@ -13,15 +13,19 @@
+     <chart_examples>
+       <example type="bar_chart">
+         <description>Used for comparing categories or showing changes over time</description>
+-        <best_practice>Keep bars proportional and start y-axis at zero</best_practice>
++        <best_practice>Keep bars proportional and start y-axis at zero when appropriate</best_practice>
+       </example>
+       <example type="scatter_plot">
+         <description>Shows relationships between two continuous variables</description>
+-        <best_practice>Include trend lines when appropriate</best_practice>
++        <best_practice>Include trend lines and confidence intervals when appropriate</best_practice>
+       </example>
+       <example type="heatmap">
+         <description>Displays data density or correlation matrices</description>
+-        <best_practice>Use intuitive color scales</best_practice>
++        <best_practice>Use intuitive color scales with proper legends</best_practice>
++      </example>
++      <example type="dashboard">
++        <description>Interactive multi-panel displays for comprehensive analysis</description>
++        <best_practice>Maintain consistent styling and logical layout</best_practice>
+       </example>
+     </chart_examples>
+     <paragraph id="p2">
+diff -u -r set_a/chapter5_ml.xml set_b/chapter5_ml.xml
+--- set_a/chapter5_ml.xml	2025-09-04 09:08:29.000000000 +1000
++++ set_b/chapter5_ml.xml	2025-09-04 09:12:24.000000000 +1000
+@@ -3,32 +3,32 @@
+   <metadata>
+     <title>Machine Learning Applications</title>
+     <author>ML Engineering Team</author>
+-    <version>1.0</version>
++    <version>1.1</version>
+     <page_range>79-105</page_range>
+   </metadata>
+   <content>
+     <paragraph id="p1">
+-      <text>Machine learning algorithms enable computers to learn and make decisions from data without explicit programming. This chapter explores supervised, unsupervised, and reinforcement learning techniques.</text>
++      <text>Machine learning algorithms enable computers to learn and make intelligent decisions from data without explicit programming. This chapter explores supervised, unsupervised, and reinforcement learning techniques.</text>
+     </paragraph>
+     <algorithm_types>
+       <supervised>
+         <description>Learning with labeled training data</description>
+-        <examples>Linear regression, decision trees, neural networks</examples>
+-        <use_cases>Classification, prediction, forecasting</use_cases>
++        <examples>Linear regression, decision trees, neural networks, ensemble methods</examples>
++        <use_cases>Classification, prediction, forecasting, recommendation systems</use_cases>
+       </supervised>
+       <unsupervised>
+         <description>Finding patterns in unlabeled data</description>
+         <examples>Clustering, dimensionality reduction, association rules</examples>
+-        <use_cases>Customer segmentation, anomaly detection</use_cases>
++        <use_cases>Customer segmentation, anomaly detection, market basket analysis</use_cases>
+       </unsupervised>
+       <reinforcement>
+-        <description>Learning through trial and error</description>
++        <description>Learning through trial and error with reward feedback</description>
+         <examples>Q-learning, policy gradients, actor-critic</examples>
+-        <use_cases>Game playing, robotics, resource allocation</use_cases>
++        <use_cases>Game playing, robotics, resource allocation, autonomous systems</use_cases>
+       </reinforcement>
+     </algorithm_types>
+     <paragraph id="p2">
+-      <text>The success of machine learning projects depends heavily on feature engineering, model selection, and proper evaluation metrics. Cross-validation and holdout sets are essential for avoiding overfitting.</text>
++      <text>The success of machine learning projects depends heavily on feature engineering, model selection, hyperparameter tuning, and proper evaluation metrics. Cross-validation and holdout sets are essential for avoiding overfitting.</text>
+     </paragraph>
+   </content>
+   <formatting>
+Only in set_b: chapter6_ethics.xml
+diff -u -r set_a/glossary.xml set_b/glossary.xml
+--- set_a/glossary.xml	2025-09-04 09:09:36.000000000 +1000
++++ set_b/glossary.xml	2025-09-04 12:06:21.000000000 +1000
+@@ -3,7 +3,7 @@
+   <metadata>
+     <title>Glossary of Terms</title>
+     <author>Editorial Team</author>
+-    <version>1.0</version>
++    <version>1.1</version>
+     <page_range>126-140</page_range>
+   </metadata>
+   <content>
+@@ -13,11 +13,15 @@
+     <term_definitions>
+       <term letter="A">
+         <word>Algorithm</word>
+-        <definition>A step-by-step procedure for solving a problem or completing a task</definition>
++        <definition>A step-by-step procedure for solving a problem or completing a computational task</definition>
+       </term>
+       <term letter="A">
+         <word>Anomaly Detection</word>
+-        <definition>The identification of rare items, events, or observations that differ significantly from the norm</definition>
++        <definition>The identification of rare items, events, or observations that differ significantly from the expected pattern or norm</definition>
++      </term>
++      <term letter="A">
++        <word>Artificial Intelligence</word>
++        <definition>Computer systems that can perform tasks typically requiring human intelligence</definition>
+       </term>
+       <term letter="B">
+         <word>Big Data</word>
+@@ -29,11 +33,11 @@
+       </term>
+       <term letter="D">
+         <word>Data Mining</word>
+-        <definition>The practice of examining large databases to generate new information and discover patterns</definition>
++        <definition>The practice of examining large databases to generate new information and discover hidden patterns</definition>
+       </term>
+       <term letter="F">
+         <word>Feature Engineering</word>
+-        <definition>The process of selecting and transforming variables for use in machine learning models</definition>
++        <definition>The process of selecting, modifying, and transforming variables for use in machine learning models</definition>
+       </term>
+     </term_definitions>
+   </content>
+diff -u -r set_a/index.xml set_b/index.xml
+--- set_a/index.xml	2025-09-04 09:10:06.000000000 +1000
++++ set_b/index.xml	2025-09-04 12:06:47.000000000 +1000
+@@ -3,7 +3,7 @@
+   <metadata>
+     <title>Index</title>
+     <author>Editorial Team</author>
+-    <version>1.0</version>
++    <version>1.1</version>
+     <page_range>151-160</page_range>
+   </metadata>
+   <content>
+@@ -13,19 +13,23 @@
+     <index_entries>
+       <entry letter="A">
+         <term>Algorithm</term>
+-        <pages>23, 45, 67, 89</pages>
++        <pages>23, 45, 67, 89, 102</pages>
+       </entry>
+       <entry letter="A">
+         <term>Analytics</term>
+         <pages>1-15, 36-58, 79-105</pages>
+       </entry>
++      <entry letter="A">
++        <term>Artificial Intelligence</term>
++        <pages>5, 18, 79, 95</pages>
++      </entry>
+       <entry letter="B">
+         <term>Big Data</term>
+-        <pages>12, 28, 41, 55</pages>
++        <pages>12, 28, 41, 55, 73</pages>
+       </entry>
+       <entry letter="C">
+         <term>Clustering</term>
+-        <pages>82, 87, 93</pages>
++        <pages>82, 87, 93, 98</pages>
+       </entry>
+       <entry letter="D">
+         <term>Data Mining</term>
+@@ -41,7 +45,7 @@
+       </entry>
+       <entry letter="P">
+         <term>Python</term>
+-        <pages>106, 108, 112</pages>
++        <pages>106, 108, 112, 114</pages>
+       </entry>
+       <entry letter="R">
+         <term>Regression</term>

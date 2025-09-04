@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document section="chapter4" type="visualization">
+  <metadata>
+    <title>Data Visualization and Interactive Reporting</title>
+    <author>Design Team</author>
+    <version>1.1</version>
+    <page_range>59-78</page_range>
+  </metadata>
+  <content>
+    <paragraph id="p1">
+      <text>Effective data visualization transforms complex datasets into understandable and actionable insights. The right visual representation can reveal patterns that might otherwise remain hidden in raw data.</text>
+    </paragraph>
+    <chart_examples>
+      <example type="bar_chart">
+        <description>Used for comparing categories or showing changes over time</description>
+        <best_practice>Keep bars proportional and start y-axis at zero when appropriate</best_practice>
+      </example>
+      <example type="scatter_plot">
+        <description>Shows relationships between two continuous variables</description>
+        <best_practice>Include trend lines and confidence intervals when appropriate</best_practice>
+      </example>
+      <example type="heatmap">
+        <description>Displays data density or correlation matrices</description>
+        <best_practice>Use intuitive color scales with proper legends</best_practice>
+      </example>
+      <example type="dashboard">
+        <description>Interactive multi-panel displays for comprehensive analysis</description>
+        <best_practice>Maintain consistent styling and logical layout</best_practice>
+      </example>
+    </chart_examples>
+    <paragraph id="p2">
+      <text>When creating visualizations, always consider your audience and the story you want to tell. Avoid chartjunk and unnecessary decorative elements that can distract from the core message.</text>
+    </paragraph>
+  </content>
+  <formatting>
+    <font_family>Arial</font_family>
+    <font_size>12</font_size>
+    <line_spacing>1.5</line_spacing>
+  </formatting>
+</document>

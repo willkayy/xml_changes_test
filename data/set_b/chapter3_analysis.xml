@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document section="chapter3" type="analysis">
+  <metadata>
+    <title>Statistical Analysis Techniques</title>
+    <author>Analytics Team</author>
+    <version>1.1</version>
+    <page_range>36-58</page_range>
+  </metadata>
+  <content>
+    <paragraph id="p1">
+      <text>Statistical analysis provides the mathematical foundation for extracting meaningful insights from data. This section covers both descriptive and inferential statistics commonly used in modern business analytics.</text>
+    </paragraph>
+    <subsection title="Descriptive Statistics">
+      <paragraph id="p2">
+        <text>Descriptive statistics summarize and describe the main features of a dataset. Key measures include central tendency (mean, median, mode) and variability (standard deviation, variance, range, interquartile range).</text>
+      </paragraph>
+      <formula>
+        <expression>μ = Σx/n</expression>
+        <description>Population mean calculation</description>
+      </formula>
+    </subsection>
+    <subsection title="Inferential Statistics">
+      <paragraph id="p3">
+        <text>Inferential statistics allow us to make predictions and generalizations about populations based on sample data. Common techniques include hypothesis testing, confidence intervals, and regression analysis.</text>
+      </paragraph>
+    </subsection>
+    <note type="important">
+      <text>Always verify statistical assumptions before applying tests. Violations can lead to invalid conclusions and flawed decision-making.</text>
+    </note>
+  </content>
+  <formatting>
+    <font_family>Arial</font_family>
+    <font_size>12</font_size>
+    <line_spacing>1.5</line_spacing>
+  </formatting>
+</document>

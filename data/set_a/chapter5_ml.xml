@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document section="chapter5" type="machine_learning">
+  <metadata>
+    <title>Machine Learning Applications</title>
+    <author>ML Engineering Team</author>
+    <version>1.0</version>
+    <page_range>79-105</page_range>
+  </metadata>
+  <content>
+    <paragraph id="p1">
+      <text>Machine learning algorithms enable computers to learn and make decisions from data without explicit programming. This chapter explores supervised, unsupervised, and reinforcement learning techniques.</text>
+    </paragraph>
+    <algorithm_types>
+      <supervised>
+        <description>Learning with labeled training data</description>
+        <examples>Linear regression, decision trees, neural networks</examples>
+        <use_cases>Classification, prediction, forecasting</use_cases>
+      </supervised>
+      <unsupervised>
+        <description>Finding patterns in unlabeled data</description>
+        <examples>Clustering, dimensionality reduction, association rules</examples>
+        <use_cases>Customer segmentation, anomaly detection</use_cases>
+      </unsupervised>
+      <reinforcement>
+        <description>Learning through trial and error</description>
+        <examples>Q-learning, policy gradients, actor-critic</examples>
+        <use_cases>Game playing, robotics, resource allocation</use_cases>
+      </reinforcement>
+    </algorithm_types>
+    <paragraph id="p2">
+      <text>The success of machine learning projects depends heavily on feature engineering, model selection, and proper evaluation metrics. Cross-validation and holdout sets are essential for avoiding overfitting.</text>
+    </paragraph>
+  </content>
+  <formatting>
+    <font_family>Arial</font_family>
+    <font_size>12</font_size>
+    <line_spacing>1.5</line_spacing>
+  </formatting>
+</document>

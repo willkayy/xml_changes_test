@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document section="bibliography" type="reference">
+  <metadata>
+    <title>Bibliography and References</title>
+    <author>Research Team</author>
+    <version>1.1</version>
+    <page_range>141-150</page_range>
+  </metadata>
+  <content>
+    <paragraph id="p1">
+      <text>This bibliography lists all sources referenced throughout the document, organized by category and following standard academic citation formats.</text>
+    </paragraph>
+    <reference_categories>
+      <category name="Books">
+        <reference id="ref1">
+          <authors>James, G., Witten, D., Hastie, T., Tibshirani, R.</authors>
+          <title>An Introduction to Statistical Learning with Applications in Python</title>
+          <publisher>Springer</publisher>
+          <year>2023</year>
+          <isbn>978-1-0716-1417-4</isbn>
+        </reference>
+        <reference id="ref2">
+          <authors>McKinney, W.</authors>
+          <title>Python for Data Analysis: Data Wrangling with pandas and NumPy</title>
+          <publisher>O'Reilly Media</publisher>
+          <year>2022</year>
+          <isbn>978-1-4919-5766-0</isbn>
+        </reference>
+        <reference id="ref5">
+          <authors>Géron, A.</authors>
+          <title>Hands-On Machine Learning with Scikit-Learn and TensorFlow</title>
+          <publisher>O'Reilly Media</publisher>
+          <year>2022</year>
+          <isbn>978-1-492-03264-9</isbn>
+        </reference>
+      </category>
+      <category name="Journal Articles">
+        <reference id="ref3">
+          <authors>Chen, T., Guestrin, C.</authors>
+          <title>XGBoost: A Scalable Tree Boosting System</title>
+          <journal>Proceedings of the 22nd ACM SIGKDD International Conference</journal>
+          <year>2016</year>
+          <pages>785-794</pages>
+        </reference>
+      </category>
+      <category name="Online Resources">
+        <reference id="ref4">
+          <title>Scikit-learn: Machine Learning in Python</title>
+          <url>https://scikit-learn.org/</url>
+          <accessed>2024-01-15</accessed>
+        </reference>
+      </category>
+    </reference_categories>
+  </content>
+  <formatting>
+    <font_family>Arial</font_family>
+    <font_size>12</font_size>
+    <line_spacing>1.5</line_spacing>
+  </formatting>
+</document>
