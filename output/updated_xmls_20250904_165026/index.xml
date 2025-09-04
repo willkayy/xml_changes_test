@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document section="index" type="reference">
+  <metadata>
+    <title>Index</title>
+    <author>Editorial Team</author>
+    <version>1.0</version>
+    <page_range>151-160</page_range>
+  </metadata>
+  <content>
+    <paragraph id="p1">
+      <text>This index provides alphabetical access to key topics, concepts, and terms discussed throughout the document.</text>
+    </paragraph>
+    <index_entries>
+      <entry letter="A">
+        <term>Algorithm</term>
+        <pages>23, 45, 67, 89</pages>
+      </entry>
+      <entry letter="A">
+        <term>Analytics</term>
+        <pages>1-15, 36-58, 79-105</pages>
+      </entry>
+      <entry letter="B">
+        <term>Big Data</term>
+        <pages>12, 28, 41, 55</pages>
+      </entry>
+      <entry letter="C">
+        <term>Clustering</term>
+        <pages>82, 87, 93</pages>
+      </entry>
+      <entry letter="D">
+        <term>Data Mining</term>
+        <pages>19, 33, 47, 61</pages>
+      </entry>
+      <entry letter="D">
+        <term>Data Visualization</term>
+        <pages>59-78</pages>
+      </entry>
+      <entry letter="M">
+        <term>Machine Learning</term>
+        <pages>79-105</pages>
+      </entry>
+      <entry letter="P">
+        <term>Python</term>
+        <pages>106, 108, 112</pages>
+      </entry>
+      <entry letter="R">
+        <term>Regression</term>
+        <pages>43, 84, 91</pages>
+      </entry>
+      <entry letter="S">
+        <term>Statistics</term>
+        <pages>36-58</pages>
+      </entry>
+    </index_entries>
+  </content>
+  <formatting>
+    <font_family>Arial</font_family>
+    <font_size>12</font_size>
+    <line_spacing>1.5</line_spacing>
+  </formatting>
+</document>
